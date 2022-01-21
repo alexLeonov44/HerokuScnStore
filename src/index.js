@@ -12,6 +12,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 const client = new ApolloClient({
   uri: 'http://heroku-scn-store-appol-server.herokuapp.com',
   cache: new InMemoryCache(),
+  credentials: true
 });
 
 ReactDOM.render(
