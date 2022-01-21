@@ -14,6 +14,7 @@ class ProductsOverview extends React.PureComponent {
       const {selectedCurrency,currencySymbols,purchases} = this.props 
 
       if(!this.props.data.category) return '......'
+      console.log(category,selectedCurrency,currencySymbols,purchases)
     return (
         <div className="products">
             <div className="products__category-name">
