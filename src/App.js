@@ -18,7 +18,7 @@ class App extends React.PureComponent {
      
     ) {
       localStorage.setItem('cart', JSON.stringify(this.props.purchases));
-      console.log(JSON.parse(localStorage.getItem("cart")));
+      // console.log(JSON.parse(localStorage.getItem("cart")));
     }
   }
   componentDidMount(){

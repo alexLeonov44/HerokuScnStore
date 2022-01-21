@@ -12,9 +12,9 @@ class ProductsOverview extends React.PureComponent {
   render() {
       const {category} = this.props.data
       const {selectedCurrency,currencySymbols,purchases} = this.props 
-
-      if(!this.props.data.category) return '......'
       console.log(category,selectedCurrency,currencySymbols,purchases)
+      if(!this.props.data.category) return '......'
+     
     return (
         <div className="products">
             <div className="products__category-name">
