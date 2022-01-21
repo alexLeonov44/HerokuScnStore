@@ -1,0 +1,91 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    position: relative;
+}
+
+.h-right_side__block{
+  display: flex;
+  align-items: center;
+
+   .hrc-currency{
+    margin-right: 18px;
+    span{
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 160%;
+    }
+       img{
+           margin:4px;
+           
+       }
+     &_button{
+        cursor: pointer;
+     }
+     &__info{
+         position: absolute;
+         top: 55px;
+         width: 100px;
+           p{
+            margin-top: 15px;
+            margin-left: 25px;
+            padding-left: 17px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 160%;
+            cursor: pointer;
+             &:hover{
+                 background-color:#e5e5e5;
+             }
+             &:active{
+                 background-color:darken(#e5e5e5, 3%);
+             }
+           }
+     }  
+   }
+   &__cart_button{
+    cursor: pointer;
+   }
+   &__cart-circle{
+       position: absolute;
+       right: -13px;
+       bottom: 40px;
+   }
+   &__cart-circle-num{
+       position: absolute;
+       right: -7px;
+       bottom: 41px;
+       font-family: Roboto;
+       font-style: normal;
+       font-weight: bold;
+       font-size: 14px;
+       line-height: 16px;
+       text-transform: uppercase;
+       color:#FFF;
+   }
+}
+
+.hc-button {
+    padding:15px;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    text-transform: uppercase;
+    cursor: pointer;
+      &__active{
+         color:#5ECE7B;
+         border-bottom: 2px solid #5ECE7B;
+         font-weight: 600;
+        
+      }
+ }
+ .h-back-button{
+    margin-right: 2rem;
+    cursor: pointer;
+}

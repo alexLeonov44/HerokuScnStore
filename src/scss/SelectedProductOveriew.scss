@@ -1,0 +1,172 @@
+.selectedProduct{
+    display: flex;
+    padding-right: 7rem;
+    background-color: #fff;
+    padding-top: 75px;
+    padding-bottom: 70px;
+    justify-content: space-between;
+}
+    .images{
+        display: flex;
+        justify-content: space-between;
+        width: 770px;
+        &__mini{
+            width: 100px;
+            overflow: hidden;
+             img{
+                 margin-bottom: 35px;
+                 width: auto;
+                 height: 82px;
+                 cursor: pointer;
+             }
+        }
+        &__full{
+          width: 613px;
+          height: 513px;
+          overflow: hidden;
+          img{
+            width: auto;
+            height: 513px;
+           
+        }
+        }
+    }
+
+    .options{
+        &__name-block{
+            margin-bottom: 40px;
+           
+        }
+       &__price-block{
+         margin-bottom: 25px;
+         font-family: Roboto Condensed;
+         font-style: normal;
+         font-weight: bold;
+         font-size: 18px;
+         line-height: 18px;
+         color: #1D1F22;
+           span{
+            display: inline-block;
+            margin-bottom: 25px;
+           }
+           i{
+            margin-right: 3px;
+        }
+       }
+
+       &__add-button{
+           display: flex;
+           width: 100%;
+           height: 46px;
+           font-family: Raleway;
+           font-style: normal;
+           font-weight: 600;
+           font-size: 16px;
+           line-height: 120%;
+           text-transform: uppercase;
+           justify-content: center;
+           align-items: center;
+           color:white;
+           background: #5ECE7B;
+           cursor: pointer;
+           margin-bottom: 40px;
+            &:hover{
+                background-color:lighten(#5ECE7B, 3%);
+            }
+            &:active{
+                background-color:lighten(#5ECE7B, 5%);
+            }
+       }
+       &__add-button__disable{
+           display: flex;
+           width: 100%;
+           height: 46px;
+           font-family: Raleway;
+           font-style: normal;
+           font-weight: 600;
+           font-size: 16px;
+           line-height: 120%;
+           text-transform: uppercase;
+           justify-content: center;
+           align-items: center;
+           color:white;
+           background: #5e8167;
+           margin-bottom: 40px;
+           pointer-events:none;
+           opacity: 0.5;
+       }
+
+       &__description-block{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 159.96%;
+        color: #1D1F22;
+       }
+    }
+
+    .sp-attributes-block{
+        span{
+            width: 100%;
+            font-family: Roboto Condensed;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 18px;
+            
+          }
+        &__text{
+            display: flex;
+            flex-wrap: wrap;
+          &__item{
+             width: 63px;
+             height: 45px;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             border: 1px solid #1D1F22;
+             cursor: pointer;
+             font-family: Source Sans Pro;
+             font-style: normal;
+             font-weight: normal;
+             font-size: 16px;
+             line-height: 18px;
+             letter-spacing: 0.05em;
+             color: #292929;
+             margin-bottom: 40px;
+             &__alert{
+                border: 1px solid #51dd77;
+               }
+              &__active{
+                  background: #1D1F22;
+                  color: #FFFFFF;
+              }
+              &:not(:last-child){
+                  margin-right: 10px;
+              }
+          }
+        }
+        &__swatch{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+             &__item{
+              width: 40px;
+              height: 40px;
+              margin-top: 10px;
+              margin-bottom: 35px; 
+              border-radius: 100%;
+              border: 3px solid #eee6e6;
+              cursor: pointer;
+              &__alert{
+                border: 3px solid #51dd77;
+               } 
+              &__active{
+                border: 3px solid #5ece7b;
+                box-shadow: 3px 0px 31px -6px rgba(55, 155, 80, 0.9);
+                color: #FFFFFF;
+               }
+             }
+        }
+     }

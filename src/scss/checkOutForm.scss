@@ -1,0 +1,38 @@
+.check-out-form{
+  
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.05em;
+   
+     margin-top: 100px;
+ 
+}
+.cof-errors{
+padding:0px;
+margin:0px;
+background-color:#E5E5E5;
+}
+.formErrors{
+    height: 40px;
+    padding:0px;
+    p{
+        margin:0px;
+        margin-left: 10px;
+    }
+ 
+  }
+.panel{
+margin-top: 50px;
+ 
+}
+
+.form-group{
+ padding:10px;
+ background-color:#E5E5E5;
+}
+.form-group .hashas-error{
+    background-color: red;
+}

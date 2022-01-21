@@ -1,0 +1,82 @@
+@import 'header';
+@import 'product';
+@import 'cart';
+@import 'SelectedProductOveriew';
+@import 'thumbnailCart';
+@import 'checkOutForm';
+
+@media (min-width:848px) {
+  html {
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-right: 12.3%;
+  padding-left: 12.3%;
+  background-color:#E5E5E5;
+  list-style: none;
+  outline: none;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont,'Raleway','Source Sans Pro' 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+*{
+  text-decoration: none;
+}
+
+.wrapper{
+  padding-left: 100px;
+  padding-right: 100px;
+  background-color: #fff;
+  position: relative; ///!!!!!!!!!!!!!!
+  overflow: hidden;
+  h1{
+    font-family: Raleway;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 42px;
+        line-height: 160%;
+        color: #1D1F22;
+        margin:0;
+  }
+  h2{
+     font-family: Raleway;
+     font-style: normal;
+     font-weight: bold;
+     font-size: 32px;
+     line-height: 40px;
+     text-transform: uppercase;
+     color: #1D1F22;
+     margin:0;
+  }
+  h3{
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    color: #1D1F22;
+    margin:0;
+    margin-bottom:13px;
+  }
+  h4{
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 27px;
+    color: #1D1F22;
+    margin:0;
+  }
+}
+
+
+
