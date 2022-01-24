@@ -35,6 +35,7 @@ class Header extends React.PureComponent {
     const {
       purchasesAmount,
       selectedCategory,
+      selectedCurrency,
       currencySymbols,
       setActiveCurrency,
       setActiveCategory,
@@ -77,6 +78,7 @@ class Header extends React.PureComponent {
             setActiveCurrency={setActiveCurrency}
             currencySymbols={currencySymbols}
             setThumbnailCartOpen={setThumbnailCartOpen}
+            selectedCurrency={selectedCurrency}
           />
           <div onClick={cartBtnOnclick} ref={this.cartButtonRef} className="h-right_side__block__cart_button">
             <img  src={cartButton} alt="backButton"></img>

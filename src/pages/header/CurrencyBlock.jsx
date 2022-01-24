@@ -3,7 +3,7 @@ import React from 'react';
 import currencyDownButton from '../../assets/currencyDownButton.svg';
 import currencyUpButton from '../../assets/currencyUpButton.svg';
 
-export default function CurrencyBlock({ currencies= [], setActiveCurrency, currencySymbols ,setThumbnailCartOpen,}) {
+export default function CurrencyBlock({ currencies= [], setActiveCurrency, currencySymbols ,setThumbnailCartOpen, selectedCurrency}) {
   const [currencyBlockVisible, setCurrencyBlockVisible] = React.useState(false);
   const currensyRef = React.useRef();
 
@@ -24,7 +24,7 @@ export default function CurrencyBlock({ currencies= [], setActiveCurrency, curre
   }, []);
   return (
     <div className="hrc-currency">
-      <span>$</span>
+      <span>{ currencySymbols[selectedCurrency]}</span>
       <img
         ref={currensyRef}
         onClick={() => currencyButtonOnClick()}
