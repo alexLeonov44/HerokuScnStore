@@ -9,14 +9,17 @@ import store from './redux/store';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-});
+ const client = new ApolloClient({
 
-// uri: 'http://heroku-scn-store-appol-server.herokuapp.com',
-// cache: new InMemoryCache(),
-// credentials: true
+  uri: 'http://heroku-scn-store-appol-server.herokuapp.com',
+cache: new InMemoryCache(),
+credentials: true
+
+//   uri: '/graphql',
+//   cache: new InMemoryCache(),
+ });
+
+
 
 ReactDOM.render(
   <React.StrictMode>
