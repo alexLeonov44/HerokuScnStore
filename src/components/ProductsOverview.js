@@ -6,13 +6,15 @@ import ProductItemCard from '../pages/product/ProductItemCard';
 import { graphql } from '@apollo/client/react/hoc';
 import {Link,withRouter} from "react-router-dom";
 import { PROD_OVERWIEW_TARCKS } from '../gqlQueries';
+import ProductsOwerviewLoader from '../Helpers/ProductsOwerviewLoader';
+
 
 class ProductsOverview extends React.PureComponent {
  
   render() {
       const {category} = this.props.data
       const {selectedCurrency,currencySymbols,purchases} = this.props 
-      if(!this.props.data.category) return '......'
+      if(!this.props.data.category) return  Array(6).fill(0).map((_,index)=><ProductsOwerviewLoader key={index}/>) 
      
     return (
         <div className="products">

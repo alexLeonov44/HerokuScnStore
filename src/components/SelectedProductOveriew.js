@@ -9,6 +9,7 @@ import { graphql } from '@apollo/client/react/hoc';
 import { withRouter } from 'react-router-dom';
 import { addProductToCart } from '../redux/actions/cart';
 import { SELECTED_PROD_TARCKS } from '../gqlQueries';
+import SelectedProductLoader from '../Helpers/SelectedProductLoader';
 
 class SelectedProductOveriew extends React.PureComponent {
   state = {};
@@ -33,8 +34,7 @@ class SelectedProductOveriew extends React.PureComponent {
   render() {
     const { selectedCurrency, currencySymbols } = this.props;
     const { product } = this.props.data;
-
-    if (!product) return '......';
+    if (!product) return <SelectedProductLoader />
     return (
       <div className="selectedProduct">
         <SelectedProductImages
