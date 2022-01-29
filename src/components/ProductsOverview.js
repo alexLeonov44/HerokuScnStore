@@ -12,7 +12,6 @@ class ProductsOverview extends React.PureComponent {
   render() {
       const {category} = this.props.data
       const {selectedCurrency,currencySymbols,purchases} = this.props 
-      console.log(category,selectedCurrency,currencySymbols,purchases)
       if(!this.props.data.category) return '......'
      
     return (

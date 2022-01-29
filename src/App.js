@@ -29,6 +29,7 @@ class App extends React.PureComponent {
   }
   render() {
     const { isThumbnailCartOpen } = this.props;
+
     return (
       <div className="wrapper">
         <Header />

@@ -36,10 +36,13 @@ class ThumbnailCart extends React.PureComponent {
       purchasesAmount,
       totalPrice,
     } = this.props;
+    // const checkout = () => {
+    //   purchases.length ? this.props.history.push({
+    //     pathname: `/check-out`,
+    // })  : alert('cart is empty! take something');
+    // };
     const checkout = () => {
-      purchases.length ? this.props.history.push({
-        pathname: `/check-out`,
-    })  : alert('cart is empty! take something');
+     alert('Check out !');
     };
     if (!purchases.length) {
     }
