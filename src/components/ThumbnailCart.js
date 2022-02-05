@@ -5,6 +5,7 @@ import { getTotalPrice, setThumbnailCartOpen } from '../redux/actions/header';
 import { cartProductOnPlus, cartProductOnMinus } from '../redux/actions/cart';
 import cartEmptyLogo from '../assets/cartEmptyLogo.svg';
 import { Link ,withRouter} from 'react-router-dom';
+import { setAuth } from '../redux/actions/auth';
 
 class ThumbnailCart extends React.PureComponent {
   constructor(props) {
@@ -35,17 +36,20 @@ class ThumbnailCart extends React.PureComponent {
       cartProductOnMinus,
       purchasesAmount,
       totalPrice,
+      isAuth
     } = this.props;
     const checkout = () => {
-      purchases.length ? this.props.history.push({
-        pathname: `/check-out`,
-    })  : alert('cart is empty! take something');
+      if(isAuth){
+        localStorage.clear()
+        this.props.setAuth(null)
+      }{
+         this.props.history.push({
+          pathname: `/check-out`,
+      }) 
+      }
+      
     };
-    // const checkout = () => {
-    //  alert('Check out !');
-    // };
-    // if (!purchases.length) {
-    // }
+    
     return (
       <div ref={this.cartOverlayRef} className="t-cart__overlay">
         <div ref={this.thumbnaillCartRef} className="t-cart">
@@ -82,7 +86,12 @@ class ThumbnailCart extends React.PureComponent {
               <button className="t-cart__btn-block__to-cart">view bag</button>
             </Link>
             <button onClick={checkout} className="t-cart__btn-block__check-out">
-              Place order
+              {
+                isAuth ?
+                'Sign out'
+                :
+                'Sign in'
+              }
             </button>
           </div>
         </div>
@@ -97,6 +106,7 @@ const mapStateToProps = (state) => {
     currencySymbols: state.header.currencySymbols,
     purchasesAmount: state.header.purchasesAmount,
     totalPrice: state.header.totalPrice,
+    isAuth:state.auth.isAuth
   };
 };
 
@@ -104,5 +114,6 @@ export default connect(mapStateToProps, {
   setThumbnailCartOpen,
   cartProductOnPlus,
   cartProductOnMinus,
-  getTotalPrice
+  getTotalPrice,
+  setAuth
 })(withRouter(ThumbnailCart)); 
