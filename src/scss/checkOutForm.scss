@@ -1,38 +1,83 @@
-.check-out-form{
-  
-    font-family: Source Sans Pro;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 18px;
-    letter-spacing: 0.05em;
-   
-     margin-top: 100px;
- 
-}
-.cof-errors{
-padding:0px;
-margin:0px;
-background-color:#E5E5E5;
-}
-.formErrors{
-    height: 40px;
-    padding:0px;
-    p{
-        margin:0px;
-        margin-left: 10px;
-    }
- 
-  }
-.panel{
-margin-top: 50px;
- 
-}
+.check-out-form {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  margin-top: 100px;
+  position: relative;
 
-.form-group{
- padding:10px;
- background-color:#E5E5E5;
-}
-.form-group .hashas-error{
-    background-color: red;
+  & .form-block {
+    margin-top: 20px;
+    label {
+      margin: 5px;
+      position: absolute;
+      color: #a5a5a5;
+
+      font-family: Raleway;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 120%;
+    }
+    &__input {
+        margin-bottom: 20px;
+      input {
+        padding-left: 5px;
+        padding-top: 15px;
+        margin-bottom: 2px;
+        display: block;
+        height: 30px;
+        border: 1px solid #e5e5e5;
+        border-radius: 2px;
+      }
+      input:focus {
+        outline: none;
+        border: 1px solid #acabab;
+        border-radius: 2px;
+      }
+      &__error{
+        margin-bottom: 20px;
+        input {
+          padding-left: 5px;
+          padding-top: 15px;
+          margin-bottom: 2px;
+          display: block;
+          height: 30px;
+          border: 1px solid red;
+          border-radius: 2px;
+        }
+        input:focus {
+          outline: none;
+          border: 1px solid red;
+          border-radius: 2px;
+        }
+      }
+    }
+    
+  }
+
+  &__btn {
+    margin-bottom: 20px;
+    display: block;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    text-transform: uppercase;
+    background: #5ece7b;
+    color: #ffffff;
+    width: 140px;
+    height: 43px;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: lighten(#5ece7b, 3%);
+    }
+    &:active {
+      background-color: lighten(#5ece7b, 5%);
+    }
+  }
 }

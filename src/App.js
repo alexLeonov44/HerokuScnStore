@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import { setItemFromLocalStorage } from './redux/actions/cart';
 import CheckOutForm from './components/CheckOutForm';
+import { setAuth } from './redux/actions/auth';
 
 class App extends React.PureComponent {
   componentDidUpdate(prevProps) {
@@ -20,10 +21,15 @@ class App extends React.PureComponent {
   }
   componentDidMount() {
     const items = JSON.parse(localStorage.getItem('cart'));
+    const authData = JSON.parse(localStorage.getItem('scnStore'));
     if (!this.props.purchases.length && items) {
       this.props.setItemFromLocalStorage(items);
     }
+    if (authData && !this.props.isAuth) {
+      this.props.setAuth(items);
+    }
   }
+
   render() {
     const { isThumbnailCartOpen } = this.props;
 
@@ -44,6 +50,7 @@ const mapStateToProps = (state) => {
   return {
     purchases: state.cart.purchases,
     isThumbnailCartOpen: state.header.isThumbnailCartOpen,
+    isAuth: state.auth.isAuth,
   };
 };
-export default connect(mapStateToProps, { setItemFromLocalStorage })(App);
+export default connect(mapStateToProps, { setItemFromLocalStorage, setAuth })(App);

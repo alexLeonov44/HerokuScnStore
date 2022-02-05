@@ -2,6 +2,8 @@ import React from 'react';
 import CategoryButton from '../pages/header/CategoryButton';
 import backButton from '../assets/backButton.svg';
 import cartCircle from '../assets/cartCircle.svg';
+import authIcon from '../assets/authIcon.svg';
+import autorithedUserIcon from '../assets/autorithedUserIcon.svg';
 
 import cartButton from '../assets/cartButton.svg';
 import CurrencyBlock from '../pages/header/CurrencyBlock';
@@ -43,6 +45,7 @@ class Header extends React.PureComponent {
       isThumbnailCartOpen,
       location,
       purchases,
+      isAuth,
     } = this.props;
     const { categories, currencies } = this.props.data;
     const cartBtnOnclick = () => {
@@ -73,6 +76,13 @@ class Header extends React.PureComponent {
           </Link>
         </div>
         <nav className="h-right_side__block">
+          <div className="h-right_side__block__auth_button">
+            {isAuth ? (
+              <img style={{ width: 18 }} src={autorithedUserIcon} alt="backButton"></img>
+            ) : (
+              <img style={{ width: 18 }} src={authIcon} alt="backButton"></img>
+            )}
+          </div>
           <CurrencyBlock
             currencies={currencies}
             setActiveCurrency={setActiveCurrency}
@@ -80,8 +90,11 @@ class Header extends React.PureComponent {
             setThumbnailCartOpen={setThumbnailCartOpen}
             selectedCurrency={selectedCurrency}
           />
-          <div onClick={cartBtnOnclick} ref={this.cartButtonRef} className="h-right_side__block__cart_button">
-            <img  src={cartButton} alt="backButton"></img>
+          <div
+            onClick={cartBtnOnclick}
+            ref={this.cartButtonRef}
+            className="h-right_side__block__cart_button">
+            <img src={cartButton} alt="backButton"></img>
             {!!purchases.length && (
               <>
                 <img
@@ -105,6 +118,7 @@ const mapStateToProps = (state) => ({
   isThumbnailCartOpen: state.header.isThumbnailCartOpen,
   purchases: state.cart.purchases,
   selectedCurrency: state.header.selectedCurrency,
+  isAuth: state.auth.isAuth,
 });
 
 export default compose(

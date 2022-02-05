@@ -1,132 +1,88 @@
 import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAuth } from '../redux/actions/auth';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-class CheckOutForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      name: '',
+const CheckOutForm = () => {
+
+  const dispatch = useDispatch()
+  let history = useHistory()
+  let {isAuth} = useSelector(({auth}) => auth)
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
       lastName: '',
-      formErrors: { email: '', text: '' },
-      emailValid: false,
-      textValid: false,
-      formValid: false,
-    };
+      email: '',
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
+      lastName: Yup.string().max(20, 'Must be 20 characters or less').required('Required'),
+      email: Yup.string().email('Invalid email address').required('Required'),
+    }),
+    onSubmit: (values) => {
+      dispatch(setAuth(values))
+      localStorage.setItem('scnStore', JSON.stringify(values));
+     console.log(values)
+    },
+  });
+  if(isAuth){
+    history.push("/cart");
   }
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.state);
-  };
-  handleUserInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({ [name]: value }, () => {
-      this.validateField(name, value);
-    });
-  };
+  return (
+    <form className="check-out-form" className="check-out-form" onSubmit={formik.handleSubmit}>
+      <h2>Sign in</h2>
 
-  validateField(fieldName, value) {
-    let fieldValidationErrors = this.state.formErrors;
-    let emailValid = this.state.emailValid;
-    let textValid = this.state.textValid;
-
-    switch (fieldName) {
-      case 'email':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-        break;
-      case 'name':
-        textValid = value.length >= 2;
-        fieldValidationErrors.text = textValid ? '' : ' is too short';
-      case 'lastName':
-        textValid = value.length >= 2;
-        fieldValidationErrors.text = textValid ? '' : ' is too short';
-
-        break;
-      default:
-        break;
-    }
-    this.setState(
-      { formErrors: fieldValidationErrors, emailValid: emailValid, textValid: textValid },
-      this.validateForm,
-    );
-  }
-
-  validateForm() {
-    this.setState({ formValid: this.state.emailValid && this.state.textValid });
-  }
-
-  errorClass(error) {
-    return error.length === 0 ? '' : 'has-error';
-  }
-
-  render() {
-    return (
-      <form className="check-out-form" onSubmit={this.handleSubmit}>
-        <h2>Check out</h2>
-        <div className="cof-errors">
-          <FormErrors formErrors={this.state.formErrors} />
+      <div className="form-block">
+        <div className={`form-block__input${formik.touched.firstName && formik.errors.firstName ? '__error' :''}`}>
+          <label htmlFor="firstName">First Name</label>
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            {...formik.getFieldProps('firstName')}
+          />
+          {formik.touched.firstName && formik.errors.firstName ? (
+            <div style={{ color: 'red' }}>{formik.errors.firstName}</div>
+          ) : null}
         </div>
-        <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
-          <label htmlFor="email">Email address</label>
-          <div>
-            <input
-              className="cof-input"
-              type="email"
-              required
-              className="form-control"
-              name="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.handleUserInput}
-            />
-          </div>
-        </div>
-        <div className={`form-group ${this.errorClass(this.state.formErrors.text)}`}>
-          <div className='cof-name-block'>
-            <label htmlFor="name">name</label>
-            <div className="cof-input">
-              <input
-                type="text"
-                className="form-control"
-                name="name"
-                placeholder="name"
-                value={this.state.name}
-                onChange={this.handleUserInput}
-              />
-            </div>
-            <label htmlFor="lastName">lastName</label>
-            <div>
-              <input
-                type="text"
-                className="form-control"
-                name="lastName"
-                placeholder="lastName"
-                value={this.state.lastName}
-                onChange={this.handleUserInput}
-              />
-            </div>
-          </div>
-        </div>
-        <input type="submit" value="Отправить" disabled={!this.state.formValid} />
-      </form>
-    );
-  }
-}
 
-export const FormErrors = ({ formErrors }) => (
-  <div className="formErrors">
-    {Object.keys(formErrors).map((fieldName, i) => {
-      if (formErrors[fieldName].length > 0) {
-        return (
-          <p key={i}>
-            {fieldName} {formErrors[fieldName]}
-          </p>
-        );
-      } else {
-        return '';
-      }
-    })}
-  </div>
-);
+        <div className={`form-block__input${formik.touched.lastName && formik.errors.lastName ? '__error' :''}`}>
+          <label htmlFor="lastName">Last Name</label>
+          <input id="lastName" name="lastName" type="text" {...formik.getFieldProps('lastName')} />
+          {formik.touched.lastName && formik.errors.lastName ? (
+            <div style={{ color: 'red' }}>{formik.errors.lastName}</div>
+          ) : null}
+        </div>
+
+        <div className={`form-block__input${formik.touched.email && formik.errors.email ? '__error' :''}`}>
+          <label htmlFor="email">Email Address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
+          {formik.touched.email && formik.errors.email ? (
+            <div style={{ color: 'red' }}>{formik.errors.email}</div>
+          ) : null}
+        </div>
+
+        <div style={{marginBottom:10}}>
+          <input id="saveMe" name="saveMe" type="checkbox" {...formik.getFieldProps('saveMe')} />
+          <span>Save Me</span>
+        </div>
+
+        <button className="check-out-form__btn" type="submit">
+        Sign in
+        </button>
+      </div>
+    </form>
+  );
+};
+
 export default CheckOutForm;

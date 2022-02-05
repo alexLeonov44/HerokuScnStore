@@ -36,16 +36,16 @@ class ThumbnailCart extends React.PureComponent {
       purchasesAmount,
       totalPrice,
     } = this.props;
-    // const checkout = () => {
-    //   purchases.length ? this.props.history.push({
-    //     pathname: `/check-out`,
-    // })  : alert('cart is empty! take something');
-    // };
     const checkout = () => {
-     alert('Check out !');
+      purchases.length ? this.props.history.push({
+        pathname: `/check-out`,
+    })  : alert('cart is empty! take something');
     };
-    if (!purchases.length) {
-    }
+    // const checkout = () => {
+    //  alert('Check out !');
+    // };
+    // if (!purchases.length) {
+    // }
     return (
       <div ref={this.cartOverlayRef} className="t-cart__overlay">
         <div ref={this.thumbnaillCartRef} className="t-cart">
@@ -82,7 +82,7 @@ class ThumbnailCart extends React.PureComponent {
               <button className="t-cart__btn-block__to-cart">view bag</button>
             </Link>
             <button onClick={checkout} className="t-cart__btn-block__check-out">
-              check out
+              Place order
             </button>
           </div>
         </div>
