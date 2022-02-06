@@ -6,10 +6,9 @@ import { setAuth } from '../redux/actions/auth';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const CheckOutForm = () => {
-
-  const dispatch = useDispatch()
-  let history = useHistory()
-  let {isAuth} = useSelector(({auth}) => auth)
+  const dispatch = useDispatch();
+  let history = useHistory();
+  let { isAuth } = useSelector(({ auth }) => auth);
 
   const formik = useFormik({
     initialValues: {
@@ -23,20 +22,24 @@ const CheckOutForm = () => {
       email: Yup.string().email('Invalid email address').required('Required'),
     }),
     onSubmit: (values) => {
-      dispatch(setAuth(values))
-      localStorage.setItem('scnStore', JSON.stringify(values));
-     console.log(values)
+      if (values.saveMe) {
+        localStorage.setItem('scnStore', JSON.stringify(values));
+      }
+      dispatch(setAuth(values));
     },
   });
-  if(isAuth){
-    history.push("/cart");
+  if (isAuth) {
+    history.push('/cart');
   }
   return (
     <form className="check-out-form" className="check-out-form" onSubmit={formik.handleSubmit}>
       <h2>Sign in</h2>
 
       <div className="form-block">
-        <div className={`form-block__input${formik.touched.firstName && formik.errors.firstName ? '__error' :''}`}>
+        <div
+          className={`form-block__input${
+            formik.touched.firstName && formik.errors.firstName ? '__error' : ''
+          }`}>
           <label htmlFor="firstName">First Name</label>
           <input
             id="firstName"
@@ -49,7 +52,10 @@ const CheckOutForm = () => {
           ) : null}
         </div>
 
-        <div className={`form-block__input${formik.touched.lastName && formik.errors.lastName ? '__error' :''}`}>
+        <div
+          className={`form-block__input${
+            formik.touched.lastName && formik.errors.lastName ? '__error' : ''
+          }`}>
           <label htmlFor="lastName">Last Name</label>
           <input id="lastName" name="lastName" type="text" {...formik.getFieldProps('lastName')} />
           {formik.touched.lastName && formik.errors.lastName ? (
@@ -57,7 +63,10 @@ const CheckOutForm = () => {
           ) : null}
         </div>
 
-        <div className={`form-block__input${formik.touched.email && formik.errors.email ? '__error' :''}`}>
+        <div
+          className={`form-block__input${
+            formik.touched.email && formik.errors.email ? '__error' : ''
+          }`}>
           <label htmlFor="email">Email Address</label>
           <input
             id="email"
@@ -72,13 +81,13 @@ const CheckOutForm = () => {
           ) : null}
         </div>
 
-        <div style={{marginBottom:10}}>
+        <div style={{ marginBottom: 10 }}>
           <input id="saveMe" name="saveMe" type="checkbox" {...formik.getFieldProps('saveMe')} />
           <span>Save Me</span>
         </div>
 
         <button className="check-out-form__btn" type="submit">
-        Sign in
+          Sign in
         </button>
       </div>
     </form>

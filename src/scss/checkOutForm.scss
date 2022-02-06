@@ -1,3 +1,13 @@
+@mixin form-input {
+  padding-left: 5px;
+  padding-top: 15px;
+  margin-bottom: 2px;
+  display: block;
+  height: 30px;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+}
+
 .check-out-form {
   font-family: Source Sans Pro;
   font-style: normal;
@@ -22,31 +32,20 @@
       line-height: 120%;
     }
     &__input {
-        margin-bottom: 20px;
+      margin-bottom: 20px;
       input {
-        padding-left: 5px;
-        padding-top: 15px;
-        margin-bottom: 2px;
-        display: block;
-        height: 30px;
-        border: 1px solid #e5e5e5;
-        border-radius: 2px;
+        @include form-input;
       }
       input:focus {
         outline: none;
         border: 1px solid #acabab;
         border-radius: 2px;
       }
-      &__error{
+      &__error {
         margin-bottom: 20px;
         input {
-          padding-left: 5px;
-          padding-top: 15px;
-          margin-bottom: 2px;
-          display: block;
-          height: 30px;
+          @include form-input;
           border: 1px solid red;
-          border-radius: 2px;
         }
         input:focus {
           outline: none;
@@ -55,7 +54,6 @@
         }
       }
     }
-    
   }
 
   &__btn {

@@ -26,7 +26,7 @@ class App extends React.PureComponent {
       this.props.setItemFromLocalStorage(items);
     }
     if (authData && !this.props.isAuth) {
-      this.props.setAuth(items);
+      this.props.setAuth(authData);
     }
   }
 
