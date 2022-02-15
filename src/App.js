@@ -19,6 +19,7 @@ class App extends React.PureComponent {
       // console.log(JSON.parse(localStorage.getItem("cart")));
     }
   }
+
   componentDidMount() {
     const items = JSON.parse(localStorage.getItem('cart'));
     const authData = JSON.parse(localStorage.getItem('scnStore'));

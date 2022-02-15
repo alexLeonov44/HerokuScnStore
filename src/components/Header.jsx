@@ -31,6 +31,7 @@ class Header extends React.PureComponent {
       this.props.getTotalPrice(this.props.purchases);
     }
   }
+  
   cartButtonOnClick() {}
   cartButtonRef = React.createRef();
   render() {
@@ -49,11 +50,12 @@ class Header extends React.PureComponent {
     } = this.props;
     const { categories, currencies } = this.props.data;
     const cartBtnOnclick = () => {
-      if (location.pathname === '/cart') {
-        setThumbnailCartOpen(false);
-      } else {
-        setThumbnailCartOpen(!isThumbnailCartOpen);
-      }
+      throw new Error('I crashed!');
+      // if (location.pathname === '/cart') {
+      //   setThumbnailCartOpen(false);
+      // } else {
+      //   setThumbnailCartOpen(!isThumbnailCartOpen);
+      // }
     };
     if (!selectedCategory && categories) setActiveCategory(categories[0].name);
     if (location.pathname === '/cart') setThumbnailCartOpen(false);
