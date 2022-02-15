@@ -11,8 +11,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import ErrorBoundary from './Helpers/ErrorBoundary';
 
 const client = new ApolloClient({
-  // uri: 'https://heroku-scn-store-appol-server.herokuapp.com/graphql',
-  uri: '',
+  uri: 'https://heroku-scn-store-appol-server.herokuapp.com/graphql',
   cache: new InMemoryCache(),
   // credentials: true
 
